@@ -14,7 +14,7 @@ cookie.onclick = function() {
     }
     speed = 1/((timeNow - this.lastTime)/1000)
     if (isNaN(speed)) {
-        clickSpeed. = 0
+        clickSpeed.textContent = 0
     } else {
     clickSpeed.textContent = speed.toFixed(2)
     }
