@@ -17,6 +17,20 @@ class Game {
   }
 
   registerEvents() {
+
+    function keyChek(event) { 
+      if (this.currentSymbol.textContent === event.key) {
+        this.success();
+      } else {
+        this.fail();
+      }
+    }
+
+    let eventChek = keyChek.bind(this)
+
+    document.addEventListener('keyup', eventChek)
+      
+    
     /*
       TODO:
       Написать обработчик события, который откликается
