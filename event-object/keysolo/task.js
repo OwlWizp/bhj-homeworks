@@ -19,7 +19,7 @@ class Game {
   registerEvents() {
 
     function keyChek(event) { 
-      if (this.currentSymbol.textContent === event.key) {
+      if (this.currentSymbol.textContent.toLowerCase() === event.key.toLowerCase()) {
         this.success();
       } else {
         this.fail();
