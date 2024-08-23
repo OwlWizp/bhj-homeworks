@@ -7,6 +7,7 @@ const welcome = document.getElementById('welcome');
 
 function xhrCreator (metod, url, send) {
     xhr.open(metod, url);
+    xhr.responseType = 'json';
     xhr.send(send)
 }
 
@@ -20,13 +21,14 @@ form.addEventListener('submit', (e)=> {
     const formData = new FormData(form);
     xhrCreator("POST", "https://students.netoservices.ru/nestjs-backend/auth", formData);
     xhr.addEventListener('loadend',()=> {
-        const result = JSON.parse(xhr.response);
+        const result = xhr.response;
         if (result.success) {
             signin.classList.remove('signin_active');
             welcome.classList.add('welcome_active');
             console.log(result);
             welcome.append(result.user_id);      
             localStorage.setItem('user_id', result.user_id);
+            form.reset()
         } else {
             alert('Неверный логин/пароль')
         }
